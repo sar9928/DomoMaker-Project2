@@ -12,10 +12,10 @@ const logout = (req, res) => {
 };
 
 // Used for reseting password
-const reset = (req, res) => {
+/*const reset = (req, res) => {
     console.log("THIS IS THE SESSION ID: " + req.session.account);
 }
-
+*/
 const login = (request, response) => {
     const req = request;
     const res = response;
@@ -42,7 +42,6 @@ const login = (request, response) => {
 const signup = (req, res) => {
 
     // cast to strings to cover up some security flaws
-    req.body.nickname = `${req.body.nickname}`;
     req.body.username = `${req.body.username}`;
     req.body.pass = `${req.body.pass}`;
     req.body.pass2 = `${req.body.pass2}`;

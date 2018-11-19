@@ -65,7 +65,7 @@ AccountSchema.statics.generateHash = (password, callback) => {
 };
 
 // Needs to be fixed up to reset password
-AccountSchema.statics.resetPassword = (oldPassword, newPassword, callback) => {
+/*AccountSchema.statics.resetPassword = (oldPassword, newPassword, callback) => {
   AccountModel.findByUsername(username, (err, doc) => {
     if (err) {
       return callback(err);
@@ -84,7 +84,7 @@ AccountSchema.statics.resetPassword = (oldPassword, newPassword, callback) => {
     });
   });
 
-}
+}*/
 
 
 
