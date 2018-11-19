@@ -39,7 +39,10 @@ const login = (request, response) => {
     });
 };
 
-const signup = (req, res) => {
+const signup = (request, response) => {
+
+    const req = request;
+    const res = response;
 
     // cast to strings to cover up some security flaws
     req.body.username = `${req.body.username}`;
@@ -95,7 +98,7 @@ const getToken = (request, response) => {
 
 module.exports.loginPage = loginPage;
 module.exports.login = login;
-module.exports.reset = reset;
+//module.exports.reset = reset;
 module.exports.logout = logout;
 module.exports.signup = signup;
 module.exports.getToken = getToken;
