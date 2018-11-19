@@ -36,6 +36,7 @@ AccountSchema.statics.toAPI = doc => ({
   _id: doc._id,
 });
 
+
 const validatePassword = (doc, password, callback) => {
   const pass = doc.password;
 
@@ -62,6 +63,31 @@ AccountSchema.statics.generateHash = (password, callback) => {
     callback(salt, hash.toString('hex'))
   );
 };
+
+// Needs to be fixed up to reset password
+AccountSchema.statics.resetPassword = (oldPassword, newPassword, callback) => {
+  AccountModel.findByUsername(username, (err, doc) => {
+    if (err) {
+      return callback(err);
+    }
+
+    if (!doc) {
+      return callback();
+    }
+
+    return validatePassword(doc, password, (result) => {
+      if (result === true) {
+        return callback(null, doc);
+      }
+
+      return callback();
+    });
+  });
+
+}
+
+
+
 
 AccountSchema.statics.authenticate = (username, password, callback) =>
 AccountModel.findByUsername(username, (err, doc) => {

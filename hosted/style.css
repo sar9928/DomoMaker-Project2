@@ -14,6 +14,26 @@ html, body {
     border-radius: 8px;
 }
 
+.ads {
+    height: 500px;
+    width: 200px;
+    position: absolute;
+    right: 30;
+    opacity: 0.2;
+    border-radius: 5px;
+    background-color: turquoise;
+}
+
+.ads2 {
+    height: 500px;
+    width: 200px;
+    position: absolute;
+    left: 10;
+    opacity: 0.2;
+    border-radius: 5px;
+    background-color: turquoise;
+}
+
 nav {
     width: 100%;
     height: 50px;
@@ -57,6 +77,26 @@ nav:nth-child(1) {
     border-top-right-radius: 4px;
 }
 
+.domoForm2 {
+    border: 2px solid maroon;
+    height: 35px;
+    margin-top:0px;
+    padding-top:10px;
+    background-color: crimson;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.domoForm3 {
+    border: 2px solid green;
+    height: 35px;
+    margin-top:0px;
+    padding-top:10px;
+    background-color: green;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
 .domoForm label {
     display: inline-block;
     width: 75px;
@@ -66,7 +106,33 @@ nav:nth-child(1) {
     color: white;
 }
 
+.domoForm2 label {
+    display: inline-block;
+    width: 75px;
+    margin-left: 10px;
+    font-size: 1.2em;
+    float: left;
+    color: silver;
+}
+
+.domoForm3 label {
+    display: inline-block;
+    width: 75px;
+    margin-left: 10px;
+    font-size: 1.2em;
+    float: left;
+    color: white;
+}
+
 .domoForm input[type=text] {
+    float:left;
+}
+
+.domoForm2 input[type=text] {
+    float:left;
+}
+
+.domoForm3 input[type=text] {
     float:left;
 }
 
@@ -80,6 +146,27 @@ nav:nth-child(1) {
     text-decoration: none;
 }
 
+.makeDomoSubmit2 {
+    transition: background-color 0.4s ease;
+    display: inline;
+    width: 90px;
+    background-color: crimson;
+    border-radius: 2px;
+    color: white;
+    text-decoration: none;
+}
+
+
+.makeDomoSubmit3 {
+    transition: background-color 0.4s ease;
+    display: inline;
+    width: 90px;
+    background-color: teal;
+    border-radius: 2px;
+    color: white;
+    text-decoration: none;
+}
+
 .makeDomoSubmit:link, .makeDomoSubmit:visited, .makeDomoSubmit:hover, .makeDomoSubmit:active {
     color: white;
 }
@@ -88,6 +175,25 @@ nav:nth-child(1) {
     transition: background-color 0.4s ease;
     background-color: #338acc;
 }
+
+.makeDomoSubmit2:link, .makeDomoSubmit2:visited, .makeDomoSubmit2:hover, .makeDomoSubmit2:active {
+    color: white;
+}
+
+.makeDomoSubmit2:hover {
+    transition: background-color 0.4s ease;
+    background-color: maroon;
+}
+
+.makeDomoSubmit3:link, .makeDomoSubmit3:visited, .makeDomoSubmit3:hover, .makeDomoSubmit3:active {
+    color: white;
+}
+
+.makeDomoSubmit3:hover {
+    transition: background-color 0.4s ease;
+    background-color: teal;
+}
+
 
 .mainForm {
     height: 300px;
@@ -206,6 +312,15 @@ nav:nth-child(1) {
     margin-top: 100px;
 }
 
+#domos3 {
+    width: 50%;
+    min-width: 400px;
+    border: 2px solid teal;
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
 
 .domo {
     width: 95%;
@@ -215,6 +330,40 @@ nav:nth-child(1) {
     border: 2px solid #55acee;
     border-radius: 4px;
     background-color: #55acee;
+    padding: 10px;
+    min-height:60px;
+    overflow: hidden;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.domo2 {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border: 2px solid red;
+    border-radius: 4px;
+    background-color: coral;
+    padding: 10px;
+    min-height:60px;
+    overflow: hidden;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.domo3 {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border: 2px solid greenyellow;
+    border-radius: 4px;
+    background-color: teal;
     padding: 10px;
     min-height:60px;
     overflow: hidden;

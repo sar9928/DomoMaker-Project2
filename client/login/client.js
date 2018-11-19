@@ -63,8 +63,6 @@ const SignupWindow = (props) => {
         method="POST"
         className="mainForm"
         >
-        <label htmlFor="nickname">Nickname: </label>
-        <input id="nname" type="text" name="nickname" placeholder="nickname"/>
         <label htmlFor="username">Username: </label>
         <input id="user" type="text" name="username" placeholder="username"/>
         <label htmlFor="pass">Password: </label>

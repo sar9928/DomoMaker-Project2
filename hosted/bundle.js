@@ -255,6 +255,135 @@ const getToken2 = () => {
 $(document).ready(function () {
     getToken2();
 });
+const handleDomo3 = e => {
+    e.preventDefault();
+
+    $("#domoMessage").animate({ width: 'hide' }, 350);
+
+    if ($("#domoName").val() == '' || $("#domoAge").val() == '' || $("#domoPrice").val() == '') {
+        handleError("RAWR! All fields are required");
+        return false;
+    }
+
+    sendAjax('POST', $("#domoForm3").attr("action"), $("#domoForm3").serialize(), function () {
+        loadDomosFromServer3();
+    });
+
+    return false;
+};
+
+const DomoForm3 = props3 => {
+    return React.createElement(
+        "form",
+        { id: "domoForm3",
+            onSubmit: handleDomo3,
+            name: "domoForm3",
+            action: "/maker3",
+            method: "POST",
+            className: "domoForm3"
+        },
+        React.createElement(
+            "label",
+            { htmlFor: "name" },
+            "Name: "
+        ),
+        React.createElement("input", { id: "domoName", type: "text", name: "name", placeholder: "Domo Name" }),
+        React.createElement(
+            "label",
+            { htmlFor: "age" },
+            "Age: "
+        ),
+        React.createElement("input", { id: "domoAge", type: "text", name: "age", placeholder: "Domo Age" }),
+        React.createElement(
+            "label",
+            { htmlFor: "price" },
+            "Price: "
+        ),
+        React.createElement("input", { id: "domoPrice", type: "text", name: "price", placeholder: "Domo Price" }),
+        React.createElement("input", { type: "hidden", name: "_csrf", value: props3.csrf }),
+        React.createElement("input", { className: "makeDomoSubmit3", type: "submit", value: "Make Domo" })
+    );
+};
+
+const DomoList3 = function (props3) {
+    if (props3.domos.length === 0) {
+        return React.createElement(
+            "div",
+            { className: "domoList3" },
+            React.createElement(
+                "h3",
+                { className: "emptyDomo" },
+                " DOMO3:  There are no domos yet"
+            )
+        );
+    }
+
+    const domoNodes3 = props3.domos.map(function (domo) {
+        return React.createElement(
+            "div",
+            { key: domo._id, className: "domo" },
+            React.createElement("img", { src: "/assets/img/domoface.jpeg", alt: "domo face", className: "domoFace" }),
+            React.createElement(
+                "div",
+                { className: "domoContainer" },
+                React.createElement(
+                    "h3",
+                    { className: "domoName" },
+                    "Name: ",
+                    domo.name,
+                    " "
+                ),
+                React.createElement(
+                    "h3",
+                    { className: "domoAge" },
+                    "Age: ",
+                    domo.age,
+                    " "
+                ),
+                React.createElement(
+                    "h3",
+                    { className: "domoPrice" },
+                    "Prices: ",
+                    domo.price,
+                    " "
+                )
+            )
+        );
+    });
+
+    return React.createElement(
+        "div",
+        { className: "domoList3" },
+        domoNodes3
+    );
+};
+
+const loadDomosFromServer3 = () => {
+    sendAjax('GET', '/getDomos', null, data => {
+        ReactDOM.render(React.createElement(DomoList3, { domos: data.domos }), document.querySelector("#domos3"));
+    });
+};
+
+const setup3 = function (csrf3) {
+
+    if (document.querySelector("#makeDomo3") != null || document.querySelector("#domos3") != null) {
+        ReactDOM.render(React.createElement(DomoForm3, { csrf: csrf3 }), document.querySelector("#makeDomo3"));
+
+        ReactDOM.render(React.createElement(DomoList3, { domos: [] }), document.querySelector("#domos3"));
+
+        loadDomosFromServer3();
+    }
+};
+
+const getToken3 = () => {
+    sendAjax('GET', '/getToken', null, result => {
+        setup3(result.csrfToken);
+    });
+};
+
+$(document).ready(function () {
+    getToken3();
+});
 const handleError = message => {
     $("#errorMessage").text(message);
     $("#domoMessage").animate({ width: 'toggle' }, 350);

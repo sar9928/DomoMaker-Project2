@@ -74,6 +74,37 @@ const makeDomo2 = (req, res) => {
     return domoPromise;
 };
 
+// third domo page checks
+const makeDomo3 = (req, res) => {
+    if(!req.body.name || !req.body.age || !req.body.price) {
+        return res.status(400).json({ error: 'RAWR! Name, age and price are required' });
+    }
+
+    const domoData = {
+        name: req.body.name,
+        age: req.body.age,
+        price: req.body.price,
+        owner: req.session.account._id,
+    };
+
+    const newDomo = new DomoModel(domoData);
+
+    const domoPromise = newDomo.save();
+
+    domoPromise.then(() => res.json({ redirect: '/maker' }));
+
+    domoPromise.catch((err) => {
+        console.log(err);
+        if(err.code === 11000) {
+            return res.status(400).json({ error: 'Domo already exists.' });
+        }
+
+        return res.status(400).json({ error: 'An error occured' });
+    });
+
+    return domoPromise;
+};
+
 const DomoSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -146,6 +177,19 @@ const makerPage2 = (req, res) => {
     });
 };
 
+const makerPage3 = (req, res) => {
+    DomoModel.find({
+       _id: req.session.account._id,
+       pageNum: 3
+    },  (err, docs) => {
+        if(err) {
+            console.log(err);
+            return res.status(400).json({ error: 'An error occured' });
+        }
+        return res.render('app3', { csrfToken: req.csrfToken(), domos: docs });
+    });
+};
+
 const getDomos = (request, response) => {
     const req = request;
     const res = response;
@@ -165,6 +209,8 @@ module.exports.make = makeDomo;
 module.exports.makerPage = makerPage;
 module.exports.make2 = makeDomo2;
 module.exports.makerPage2 = makerPage2;
+module.exports.make3 = makeDomo3;
+module.exports.makerPage3 = makerPage3;
 module.exports.DomoModel = DomoModel;
 module.exports.DomoSchema = DomoSchema;
 

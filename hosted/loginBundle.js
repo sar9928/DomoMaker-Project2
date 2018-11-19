@@ -72,12 +72,6 @@ const SignupWindow = props => {
         },
         React.createElement(
             "label",
-            { htmlFor: "nickname" },
-            "Nickname: "
-        ),
-        React.createElement("input", { id: "nname", type: "text", name: "nickname", placeholder: "nickname" }),
-        React.createElement(
-            "label",
             { htmlFor: "username" },
             "Username: "
         ),

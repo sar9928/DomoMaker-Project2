@@ -12,6 +12,8 @@ const router = (app) => {
     app.post('/maker', mid.requiresLogin, controllers.Domo.make);
     app.get('/maker2', mid.requiresLogin, controllers.Domo.makerPage2);
     app.post('/maker2', mid.requiresLogin, controllers.Domo.make2);
+    app.get('/maker3', mid.requiresLogin, controllers.Domo.makerPage3);
+    app.post('/maker3', mid.requiresLogin, controllers.Domo.make3);
     app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 };
 
